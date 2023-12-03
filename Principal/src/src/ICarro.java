@@ -9,12 +9,14 @@ package src;
  * @author jvito
  */
 public interface ICarro {
+    public void setNome(String nome);
     public void setTipo(String tipo);
     public void setMarca(String marca);
-    public void setVeldeMax(Float velMax);
+    public void setVelMax(Float velMax);
     public void setNumPortas(Integer numPortas);
+    public String getNome();
     public String getTipo();
     public String getMarca();
-    public Float getVeldeMax();
+    public Float getVelMax();
     public Integer getNumPortas();
 }

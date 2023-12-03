@@ -4,6 +4,8 @@
  */
 package src;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jvito
@@ -61,8 +63,18 @@ public class MenuFabricante extends javax.swing.JFrame {
         });
 
         btEditCarro.setText("Editar Carro");
+        btEditCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditCarroActionPerformed(evt);
+            }
+        });
 
         btRemoveCarro.setText("Remover Carro");
+        btRemoveCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoveCarroActionPerformed(evt);
+            }
+        });
 
         btVoltar.setText("Voltar");
         btVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +145,27 @@ public class MenuFabricante extends javax.swing.JFrame {
         setVisible(false);
         menuListarCarros.setVisible(true);
     }//GEN-LAST:event_btListCarroActionPerformed
+
+    private void btRemoveCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoveCarroActionPerformed
+        if (MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Fabricante não possui nenhum carro","Erro",JOptionPane.WARNING_MESSAGE);
+        } else {
+            MenuRemoverCarro menuRemoverCarro = new MenuRemoverCarro();
+            menuRemoverCarro.remover(false);
+            setVisible(false);
+            menuRemoverCarro.setVisible(true);
+        }
+    }//GEN-LAST:event_btRemoveCarroActionPerformed
+
+    private void btEditCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditCarroActionPerformed
+        if (MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Fabricante não possui carro","Erro",JOptionPane.WARNING_MESSAGE);
+        } else {
+            MenuEditCarroFabricante menuEditCarroFabricante = new MenuEditCarroFabricante();
+            setVisible(false);
+            menuEditCarroFabricante.setVisible(true);
+        }
+    }//GEN-LAST:event_btEditCarroActionPerformed
 
     /**
      * @param args the command line arguments

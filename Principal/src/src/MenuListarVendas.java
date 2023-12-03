@@ -111,17 +111,7 @@ public class MenuListarVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        DefaultTableModel model =(DefaultTableModel) tbVendas.getModel();
-            model.setNumRows(0);
-            for(Concessionaria.NotaFiscal notaFiscal : MenuConcessionaria.concessionaria.getNotasFiscais()) {
-                model.addRow(new Object[] 
-                { 
-                    notaFiscal.getCliente().getNome(), 
-                    notaFiscal.getCliente().getCpf(),
-                    notaFiscal.getCarro().getMarca(), 
-                    notaFiscal.getCarro().getTipo(),
-                }); 
-            }
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -130,6 +120,20 @@ public class MenuListarVendas extends javax.swing.JFrame {
         menuConcessionaria.setVisible(true);
     }//GEN-LAST:event_btVoltarActionPerformed
 
+    public void carregarVendas() {
+        DefaultTableModel model =(DefaultTableModel) tbVendas.getModel();
+            model.setNumRows(0);
+            for(NotaFiscal notaFiscal : MenuConcessionaria.concessionaria.getNotasFiscais()) {
+                model.addRow(new Object[] 
+                { 
+                    notaFiscal.getCliente().getNome(), 
+                    notaFiscal.getCliente().getCpf(),
+                    notaFiscal.getCarro().getNome(),
+                    notaFiscal.getCarro().getTipo(),
+                    notaFiscal.getCarro().getMarca()
+                }); 
+            }
+    }
             
     /**
      * @param args the command line arguments

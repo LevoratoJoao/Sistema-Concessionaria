@@ -15,7 +15,7 @@ public class CarroHatch extends Carro {
         super("Hatch", marca, nome, velMax, numPortas);
         this.preco = preco;
     }
-
+    
     public Float getPreco() {
         return preco;
     }

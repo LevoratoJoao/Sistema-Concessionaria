@@ -47,6 +47,7 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adicionar Carro a Venda");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -56,12 +57,6 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
         lbCarrosDisponiveis.setText("Carros disponiveis pela fabricante");
 
         lbPreco.setText("Preco");
-
-        tfPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPrecoActionPerformed(evt);
-            }
-        });
 
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -83,21 +78,19 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btAdicionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btVoltar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbCarrosDisponiveis)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbPreco)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(45, 45, 45)
-                        .addComponent(cbCarrosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lbCarrosDisponiveis)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(lbPreco)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btAdicionar))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btVoltar)
+                    .addComponent(cbCarrosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,14 +99,14 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCarrosDisponiveis)
                     .addComponent(cbCarrosDisponiveis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPreco)
                     .addComponent(tfPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btAdicionar)
-                    .addComponent(btVoltar))
+                    .addComponent(btVoltar)
+                    .addComponent(btAdicionar))
                 .addGap(51, 51, 51))
         );
 
@@ -123,19 +116,16 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
         for (Carro carroDisponivel : carrosDisponiveis) {
-            System.out.println(""+carroDisponivel.getNome());
             cbCarrosDisponiveis.addItem(carroDisponivel.getNome());
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void tfPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPrecoActionPerformed
-        try {
-              Float preco = Float.parseFloat(tfPreco.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null,"Preco invalido", "Erro", JOptionPane.ERROR_MESSAGE);
+    public class MinhaExcecao extends Exception {
+        public MinhaExcecao(String message){
+            super(message);
         }
-    }//GEN-LAST:event_tfPrecoActionPerformed
-
+    }
+    
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         try {
             String nomeCarro = String.valueOf(cbCarrosDisponiveis.getSelectedItem());
@@ -146,25 +136,27 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
              */
             for (Carro carroDisponivel : carrosDisponiveis) {
                 if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)){
-                    MenuConcessionaria.concessionaria.adicionarCarro(carroDisponivel);
-                    int i = MenuConcessionaria.concessionaria.getCarrosAVenda().indexOf(carroDisponivel);
-                    String name = MenuConcessionaria.concessionaria.getCarrosAVenda().get(i).getClass().getSimpleName();
-                    if (name.equals("CarroHatch") == true) {
-                        CarroHatch carro = (CarroHatch)(MenuConcessionaria.concessionaria.getCarrosAVenda().get(i));
-                        carro.setPreco(Float.parseFloat(tfPreco.getText()));
-                    } else if (name.equals("CarroSeda") == true) {
-                        CarroSeda carro = (CarroSeda)(MenuConcessionaria.concessionaria.getCarrosAVenda().get(i));
-                        carro.setPreco(Float.parseFloat(tfPreco.getText()));
+                    int i = carrosDisponiveis.indexOf(carroDisponivel);
+                    Carro carro = carrosDisponiveis.get(i);
+                    if (carro.getClass().getSimpleName().equals("CarroHatch") == true) {
+                        Carro novoCarro = new CarroHatch(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
+                        
+                        //if (Float.parseFloat(tfPreco.getText()) >  carro.getPreco()))                     
+                        
+                        MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
+                    } else if (carro.getClass().getSimpleName().equals("CarroSeda") == true) {
+                        Carro novoCarro = new CarroSeda(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
+                        MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
                     } else {
-                        JOptionPane.showMessageDialog(null,"Erro ao tentar adicionar carro", "Erro", JOptionPane.ERROR_MESSAGE);
                         throw new Exception();
                     }
+                    JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
                     MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
+                    limparCampos();
                     setVisible(false);
                     menuConcessionaria.setVisible(true);
                 }
             }
-            JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao tentar adicionar carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -172,6 +164,7 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
+        limparCampos();
         setVisible(false);
         menuConcessionaria.setVisible(true);
     }//GEN-LAST:event_btVoltarActionPerformed

@@ -15,12 +15,12 @@ public class CarroSeda extends Carro {
         super("Seda", marca, nome, velMax, numPortas);
         this.preco = preco;
     }
-
+    
     public Float getPreco() {
         return preco;
     }
 
     public void setPreco(Float preco) {
         this.preco = preco;
-    }    
+    }
 }

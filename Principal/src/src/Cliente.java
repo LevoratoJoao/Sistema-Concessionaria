@@ -20,6 +20,10 @@ public class Cliente {
         this.idade = idade;
         this.telefone = telefone;
     }
+    
+    public Cliente() {
+        
+    }
 
     public String getNome() {
         return nome;

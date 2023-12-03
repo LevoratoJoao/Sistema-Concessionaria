@@ -9,6 +9,7 @@ package src;
  * @author jvito
  */
 public class Carro implements ICarro {
+
     private String tipo;
     private String marca;
     private String nome;
@@ -23,22 +24,19 @@ public class Carro implements ICarro {
         this.numPortas = numPortas;
     }
 
+    public Carro() {
+
+    }
+
+    @Override
     public String getNome() {
         return nome;
     }
 
+    @Override
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    public Float getVelMax() {
-        return velMax;
-    }
-
-    public void setVelMax(Float velMax) {
-        this.velMax = velMax;
-    }
-    
 
     @Override
     public void setTipo(String tipo) {
@@ -51,7 +49,7 @@ public class Carro implements ICarro {
     }
 
     @Override
-    public void setVeldeMax(Float velMax) {
+    public void setVelMax(Float velMax) {
         this.velMax = velMax;
     }
 
@@ -71,7 +69,7 @@ public class Carro implements ICarro {
     }
 
     @Override
-    public Float getVeldeMax() {
+    public Float getVelMax() {
         return velMax;
     }
 
@@ -79,5 +77,4 @@ public class Carro implements ICarro {
     public Integer getNumPortas() {
         return numPortas;
     }
-    
 }

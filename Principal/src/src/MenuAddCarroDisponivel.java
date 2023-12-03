@@ -194,12 +194,12 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
                 throw new Exception("Erro.");
             }
             JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            MenuFabricante menuFabricante = new MenuFabricante();
+            MenuFabricante menuFabricante = MenuFabricante.iniciar();
             limparCampos();
             setVisible(false);
             menuFabricante.setVisible(true);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao adicionar","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Erro ao tentar adicionar carro","Erro",JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_btAddActionPerformed
@@ -209,7 +209,7 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
     }//GEN-LAST:event_cbTipoActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
-        MenuFabricante menuFabricante = new MenuFabricante();
+        MenuFabricante menuFabricante = MenuFabricante.iniciar();
         limparCampos();
         setVisible(false);
         menuFabricante.setVisible(true);

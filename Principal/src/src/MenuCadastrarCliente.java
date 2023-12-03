@@ -139,7 +139,7 @@ public class MenuCadastrarCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        MenuConcessionaria menuConcessionaria = new MenuConcessionaria();
+        MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         limparCampos();
         setVisible(false);
         menuConcessionaria.setVisible(true);

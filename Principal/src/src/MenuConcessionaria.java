@@ -15,12 +15,11 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
     public static MenuConcessionaria janela;
 
-    public static Concessionaria concessionaria;
+    public static Concessionaria concessionaria = new Concessionaria();;
     /**
      * Creates new form Concessionaria
      */
     public MenuConcessionaria() {
-        concessionaria = new Concessionaria();
         initComponents();
     }
     
@@ -72,6 +71,11 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         });
 
         btRemoveCarro.setText("Remover Carro");
+        btRemoveCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoveCarroActionPerformed(evt);
+            }
+        });
 
         btListarCarros.setText("Listar Carros");
         btListarCarros.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +103,11 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         });
 
         btVenderCarro.setText("Vender Carro");
+        btVenderCarro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVenderCarroActionPerformed(evt);
+            }
+        });
 
         btMenuFabricante.setText("Menu Fabricante");
         btMenuFabricante.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +190,9 @@ public class MenuConcessionaria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEditCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditCarroActionPerformed
-        
+        MenuEditCarroConcessionaria menuEditCarroConcessionaria = MenuEditCarroConcessionaria.iniciar();
+        setVisible(false);
+        menuEditCarroConcessionaria.setVisible(true);
     }//GEN-LAST:event_btEditCarroActionPerformed
 
     private void btMenuFabricanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMenuFabricanteActionPerformed
@@ -201,7 +212,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Fabricante não possui carro","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
-            MenuAddCarroVenda menuAddCarro = MenuAddCarroVenda.iniciar();
+            MenuAddCarroVenda menuAddCarro = new MenuAddCarroVenda();
             setVisible(false);
             menuAddCarro.setVisible(true);
         }
@@ -222,9 +233,34 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
     private void btListarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarVendasActionPerformed
         MenuListarVendas menuListarVendas = MenuListarVendas.iniciar();
+        menuListarVendas.carregarVendas();
         setVisible(false);
         menuListarVendas.setVisible(true);
     }//GEN-LAST:event_btListarVendasActionPerformed
+
+    private void btVenderCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderCarroActionPerformed
+        if (concessionaria.getCarrosAVenda().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro a venda","Erro",JOptionPane.WARNING_MESSAGE);
+        } else if (concessionaria.getClientes().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum cliente cadastrado","Erro",JOptionPane.WARNING_MESSAGE);
+        }
+        else {
+            MenuVenderCarro menuVenderCarro = new MenuVenderCarro();
+            setVisible(false);
+            menuVenderCarro.setVisible(true);
+        }
+    }//GEN-LAST:event_btVenderCarroActionPerformed
+
+    private void btRemoveCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoveCarroActionPerformed
+        if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro","Erro",JOptionPane.WARNING_MESSAGE);
+        } else {
+            MenuRemoverCarro menuRemoverCarro = new MenuRemoverCarro();
+            menuRemoverCarro.remover(true);
+            setVisible(false);
+            menuRemoverCarro.setVisible(true);
+        }
+    }//GEN-LAST:event_btRemoveCarroActionPerformed
 
     /**
      * @param args the command line arguments
