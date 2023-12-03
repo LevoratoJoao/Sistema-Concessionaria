@@ -53,6 +53,7 @@ public class Login extends javax.swing.JFrame {
         pfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         lbUser.setText("Usuario");
 

@@ -44,8 +44,10 @@ public class MenuVenderCarro extends javax.swing.JFrame {
         cbCarros = new javax.swing.JComboBox<>();
         btVender = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vender Carro");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -70,6 +72,8 @@ public class MenuVenderCarro extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Vender");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,11 +96,17 @@ public class MenuVenderCarro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addComponent(btCancelar)
                         .addGap(52, 52, 52))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliente)
                     .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -201,6 +211,7 @@ public class MenuVenderCarro extends javax.swing.JFrame {
     private javax.swing.JButton btVender;
     private javax.swing.JComboBox<String> cbCarros;
     private javax.swing.JComboBox<String> cbClientes;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCarro;
     private javax.swing.JLabel lbCliente;
     // End of variables declaration//GEN-END:variables

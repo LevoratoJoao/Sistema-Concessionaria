@@ -4,6 +4,7 @@
  */
 package src;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,22 +12,22 @@ import javax.swing.table.DefaultTableModel;
  * @author jvito
  */
 public class MenuListarVendas extends javax.swing.JFrame {
+
     public static MenuListarVendas janela;
-    
+
     /**
      * Creates new form MenuListarVendas
      */
     public MenuListarVendas() {
         initComponents();
     }
-    
+
     public static MenuListarVendas iniciar() {
         if (janela == null) {
             janela = new MenuListarVendas();
         }
         return janela;
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -42,6 +43,7 @@ public class MenuListarVendas extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Lista de Vendas");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -111,7 +113,7 @@ public class MenuListarVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
@@ -121,20 +123,39 @@ public class MenuListarVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_btVoltarActionPerformed
 
     public void carregarVendas() {
-        DefaultTableModel model =(DefaultTableModel) tbVendas.getModel();
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbVendas.getModel();
             model.setNumRows(0);
-            for(NotaFiscal notaFiscal : MenuConcessionaria.concessionaria.getNotasFiscais()) {
-                model.addRow(new Object[] 
-                { 
-                    notaFiscal.getCliente().getNome(), 
-                    notaFiscal.getCliente().getCpf(),
-                    notaFiscal.getCarro().getNome(),
-                    notaFiscal.getCarro().getTipo(),
-                    notaFiscal.getCarro().getMarca()
-                }); 
+            for (NotaFiscal notaFiscal : MenuConcessionaria.concessionaria.getNotasFiscais()) {
+                if (notaFiscal.getCarro().getTipo().equals("Hatch") == true) {
+                    CarroHatch carroHatch = (CarroHatch) notaFiscal.getCarro();
+                    model.addRow(new Object[]{
+                        notaFiscal.getCliente().getNome(),
+                        notaFiscal.getCliente().getCpf(),
+                        notaFiscal.getCarro().getNome(),
+                        notaFiscal.getCarro().getTipo(),
+                        notaFiscal.getCarro().getMarca(),
+                        carroHatch.getPreco()
+                    });
+                } else if (notaFiscal.getCarro().getTipo().equals("Seda") == true) {
+                    CarroSeda carroSeda = (CarroSeda) notaFiscal.getCarro();
+                    model.addRow(new Object[]{
+                        notaFiscal.getCliente().getNome(),
+                        notaFiscal.getCliente().getCpf(),
+                        notaFiscal.getCarro().getNome(),
+                        notaFiscal.getCarro().getTipo(),
+                        notaFiscal.getCarro().getMarca(),
+                        carroSeda.getPreco()
+                    });
+                } else {
+                    throw new Exception();
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro: não foi possivel listar os carros.","",JOptionPane.ERROR_MESSAGE);
+        }
     }
-            
+
     /**
      * @param args the command line arguments
      */

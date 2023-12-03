@@ -52,6 +52,7 @@ public class MenuCadastrarCliente extends javax.swing.JFrame {
         btCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Cliente");
 
         lbNome.setText("Nome:");
 
@@ -166,6 +167,9 @@ public class MenuCadastrarCliente extends javax.swing.JFrame {
             String CPF = tfCPF.getText();
             Integer idade = Integer.parseInt(tfIdade.getText());
             String telefone = tfTelefone.getText();
+            if (nome.isBlank() == true || CPF.isBlank() == true || telefone.isBlank() == true || idade < 18) {
+                throw new MinhaExcecao("Erro: valor digitado invalido");
+            }
             Cliente cliente = new Cliente(nome, CPF, idade, telefone);            
             if (verificarCliente(CPF) == false) {
                 MenuConcessionaria.concessionaria.cadastrarCliente(cliente);

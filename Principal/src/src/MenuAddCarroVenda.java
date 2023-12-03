@@ -139,12 +139,17 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
                     int i = carrosDisponiveis.indexOf(carroDisponivel);
                     Carro carro = carrosDisponiveis.get(i);
                     if (carro.getClass().getSimpleName().equals("CarroHatch") == true) {
+                        CarroHatch carroHatch = (CarroHatch) carro;
+                        if (Float.parseFloat(tfPreco.getText()) <  carroHatch.getPreco()) {
+                            throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
+                        }   
                         Carro novoCarro = new CarroHatch(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
-                        
-                        //if (Float.parseFloat(tfPreco.getText()) >  carro.getPreco()))                     
-                        
                         MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
                     } else if (carro.getClass().getSimpleName().equals("CarroSeda") == true) {
+                        CarroSeda carroSeda = (CarroSeda) carro;
+                        if (Float.parseFloat(tfPreco.getText()) <  carroSeda.getPreco()) {
+                            throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
+                        }
                         Carro novoCarro = new CarroSeda(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
                         MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
                     } else {
@@ -157,6 +162,8 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
                     menuConcessionaria.setVisible(true);
                 }
             }
+        } catch (MinhaExcecao e) {
+            JOptionPane.showMessageDialog(null,"" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao tentar adicionar carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }

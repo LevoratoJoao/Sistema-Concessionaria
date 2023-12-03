@@ -45,6 +45,7 @@ public class MenuFabricante extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu da Fabricante");
 
         jLabel1.setText("Menu Fabricante");
 

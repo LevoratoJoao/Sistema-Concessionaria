@@ -53,6 +53,7 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
         tfPreco = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Adicionar Carro Fabricante");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -60,12 +61,6 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
         });
 
         lbTipo.setText("Tipo");
-
-        cbTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbTipoActionPerformed(evt);
-            }
-        });
 
         lbMarca.setText("Marca");
 
@@ -176,6 +171,12 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
         cbTipo.addItem("Seda");
     }//GEN-LAST:event_formWindowOpened
 
+    public class MinhaExcecao extends Exception {
+        public MinhaExcecao(String message){
+            super(message);
+        }
+    }
+    
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
         try {
             String tipo = String.valueOf(cbTipo.getSelectedItem());
@@ -184,6 +185,9 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
             Float velMax = Float.parseFloat(tfVelMax.getText());
             Integer numPortas = Integer.parseInt(String.valueOf(cbNumPortas.getSelectedItem()));
             Float preco = Float.parseFloat(tfPreco.getText());
+            if (preco < 0 || velMax < 0 || nome.isBlank()== true || marca.isBlank()== true) {
+                throw new MinhaExcecao("Erro: valor digitado invalido");
+            }
             if (tipo.equals("Hatch") == true) {
                 Carro carro = new CarroHatch(marca, nome, velMax, numPortas, preco);
                 MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
@@ -198,15 +202,12 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
             limparCampos();
             setVisible(false);
             menuFabricante.setVisible(true);
-        } catch (Exception e) {
+        } catch (MinhaExcecao e) {
+            JOptionPane.showMessageDialog(null, ""+ e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        }catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao tentar adicionar carro","Erro",JOptionPane.ERROR_MESSAGE);
         }
-        
     }//GEN-LAST:event_btAddActionPerformed
-
-    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbTipoActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
         MenuFabricante menuFabricante = MenuFabricante.iniciar();

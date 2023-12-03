@@ -133,10 +133,20 @@ public class MenuEditCarroConcessionaria extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    public class MinhaExcecao extends Exception {
+
+        public MinhaExcecao(String message) {
+            super(message);
+        }
+    }
+
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         try {
             String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
             ArrayList<Carro> carrosVenda = MenuConcessionaria.concessionaria.getCarrosAVenda();
+            if (Float.parseFloat(tfPreco.getText()) < 0) {
+                throw new MinhaExcecao("Erro: preco invalido");
+            }
             for (Carro carroVenda : carrosVenda) {
                 if (carroVenda.getNome().equalsIgnoreCase(nomeCarro)) {
                     if (carroVenda.getClass().getSimpleName().equals("CarroHatch") == true) {
@@ -155,7 +165,8 @@ public class MenuEditCarroConcessionaria extends javax.swing.JFrame {
                     menuConcessionaria.setVisible(true);
                 }
             }
-
+        } catch (MinhaExcecao e) {
+            JOptionPane.showMessageDialog(null, "" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao tentar editar carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }

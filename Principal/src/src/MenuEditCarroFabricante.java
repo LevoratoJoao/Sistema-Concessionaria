@@ -12,16 +12,16 @@ import javax.swing.JOptionPane;
  * @author jvito
  */
 public class MenuEditCarroFabricante extends javax.swing.JFrame {
-    
+
     public static MenuEditCarroFabricante janela;
-    
+
     /**
      * Creates new form MenuEditCarroFabricante
      */
     public MenuEditCarroFabricante() {
         initComponents();
     }
-    
+
     public static MenuEditCarroFabricante iniciar() {
         if (janela == null) {
             janela = new MenuEditCarroFabricante();
@@ -163,10 +163,19 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public class MinhaExcecao extends Exception {
+        public MinhaExcecao(String message) {
+            super(message);
+        }
+    }
+
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         try {
             String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
             ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
+            if (Float.parseFloat(tfPreco.getText()) < 0 || Float.parseFloat(tfVelMax.getText()) < 0) {
+                throw new MinhaExcecao("Erro: valor numerico invalido");
+            }
             for (Carro carroDisponivel : carrosDisponiveis) {
                 if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)) {
                     carroDisponivel.setMarca(tfMarca.getText());
@@ -189,6 +198,8 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
                     menuFabricante.setVisible(true);
                 }
             }
+        } catch (MinhaExcecao e) {
+            JOptionPane.showMessageDialog(null, ""+ e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao tentar editar carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -209,14 +220,14 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
-    public void limparCampos(){
+    public void limparCampos() {
         tfNome.setText("");
         tfPreco.setText("");
         tfVelMax.setText("");
         tfMarca.setText("");
         cbNumPortas.setSelectedIndex(0);
     }
-    
+
     /**
      * @param args the command line arguments
      */
