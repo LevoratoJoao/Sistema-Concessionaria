@@ -157,6 +157,7 @@ public class MenuVenderCarro extends javax.swing.JFrame {
             NotaFiscal notaFiscal = new NotaFiscal(cliente, carro);
             MenuConcessionaria.concessionaria.venderCarro(notaFiscal, carro);
             JOptionPane.showMessageDialog(null, "Carro vendido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            janela = null;
             MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
             setVisible(false);
             menuConcessionaria.setVisible(true);
@@ -166,6 +167,7 @@ public class MenuVenderCarro extends javax.swing.JFrame {
     }//GEN-LAST:event_btVenderActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
+        janela = null;
         MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         setVisible(false);
         menuConcessionaria.setVisible(true);

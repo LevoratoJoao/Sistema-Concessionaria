@@ -173,13 +173,14 @@ public class MenuEditCarroConcessionaria extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         limparCampos();
+        MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         setVisible(false);
         menuConcessionaria.setVisible(true);
     }//GEN-LAST:event_btCancelarActionPerformed
 
     public void limparCampos() {
+        janela = null;
         tfPreco.setText("");
     }
 

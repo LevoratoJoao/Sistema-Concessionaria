@@ -130,6 +130,7 @@ public class MenuRemoverCarro extends javax.swing.JFrame {
                 if (carroVenda.getNome().equalsIgnoreCase(nomeCarro)){
                     MenuConcessionaria.concessionaria.removerCarro(carroVenda);
                     JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                    janela = null;
                     MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
                     setVisible(false);
                     menuConcessionaria.setVisible(true);
@@ -149,6 +150,7 @@ public class MenuRemoverCarro extends javax.swing.JFrame {
                 if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)){
                     MenuConcessionaria.concessionaria.getFabricante().removerCarro(carroDisponivel);
                     JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+                    janela = null;
                     MenuFabricante menuFabricante = MenuFabricante.iniciar();
                     setVisible(false);
                     menuFabricante.setVisible(true);

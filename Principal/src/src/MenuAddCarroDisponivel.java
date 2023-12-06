@@ -210,13 +210,14 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
     }//GEN-LAST:event_btAddActionPerformed
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
-        MenuFabricante menuFabricante = MenuFabricante.iniciar();
         limparCampos();
+        MenuFabricante menuFabricante = MenuFabricante.iniciar();
         setVisible(false);
         menuFabricante.setVisible(true);
     }//GEN-LAST:event_btCancelActionPerformed
 
     public void limparCampos(){
+        janela = null;
         tfNome.setText("");
         tfPreco.setText("");
         tfVelMax.setText("");

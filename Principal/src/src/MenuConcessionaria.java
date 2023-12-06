@@ -194,7 +194,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Fabricante não possui carro","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
-            MenuEditCarroConcessionaria menuEditCarroConcessionaria = new MenuEditCarroConcessionaria();
+            MenuEditCarroConcessionaria menuEditCarroConcessionaria = MenuEditCarroConcessionaria.iniciar();
             setVisible(false);
             menuEditCarroConcessionaria.setVisible(true);
         }
@@ -217,7 +217,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
-            MenuAddCarroVenda menuAddCarro = new MenuAddCarroVenda();
+            MenuAddCarroVenda menuAddCarro = MenuAddCarroVenda.iniciar();
             setVisible(false);
             menuAddCarro.setVisible(true);
         }
@@ -260,7 +260,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
-            MenuRemoverCarro menuRemoverCarro = new MenuRemoverCarro();
+            MenuRemoverCarro menuRemoverCarro = MenuRemoverCarro.iniciar();
             menuRemoverCarro.remover(true);
             setVisible(false);
             menuRemoverCarro.setVisible(true);

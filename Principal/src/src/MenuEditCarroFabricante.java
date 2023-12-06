@@ -192,8 +192,8 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
                         throw new Exception("Erro.");
                     }
                     JOptionPane.showMessageDialog(null, "Carro editado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                    MenuFabricante menuFabricante = MenuFabricante.iniciar();
                     limparCampos();
+                    MenuFabricante menuFabricante = MenuFabricante.iniciar();
                     setVisible(false);
                     menuFabricante.setVisible(true);
                 }
@@ -207,8 +207,8 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btCancel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancel1ActionPerformed
-        MenuFabricante menuFabricante = MenuFabricante.iniciar();
         limparCampos();
+        MenuFabricante menuFabricante = MenuFabricante.iniciar();
         setVisible(false);
         menuFabricante.setVisible(true);
     }//GEN-LAST:event_btCancel1ActionPerformed
@@ -221,6 +221,7 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void limparCampos() {
+        janela = null;
         tfNome.setText("");
         tfPreco.setText("");
         tfVelMax.setText("");
