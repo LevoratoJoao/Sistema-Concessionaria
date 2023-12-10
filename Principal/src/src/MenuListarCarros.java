@@ -118,6 +118,7 @@ public class MenuListarCarros extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void voltar() {
+        janela = null;
         if (this.pagina == true) {
             MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
             setVisible(false);

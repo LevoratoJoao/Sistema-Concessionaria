@@ -12,13 +12,11 @@ import java.util.ArrayList;
  */
 public class Concessionaria {
 
-    private ArrayList<Cliente> clientes;
     private Fabricante fabricante;
     private ArrayList<Carro> carrosAVenda;
     private ArrayList<NotaFiscal> notasFiscais;
 
     public Concessionaria() {
-        this.clientes = new ArrayList<>();
         this.carrosAVenda = new ArrayList<>();
         this.fabricante = new Fabricante();
         this.notasFiscais = new ArrayList<>();
@@ -34,10 +32,6 @@ public class Concessionaria {
 
     public ArrayList<Carro> getCarrosAVenda() {
         return carrosAVenda;
-    }
-
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
     }
 
     public void venderCarro(NotaFiscal notaFiscal, Carro carro) {
@@ -56,9 +50,5 @@ public class Concessionaria {
 
     public ArrayList<NotaFiscal> getNotasFiscais() {
         return notasFiscais;
-    }
-
-    public void cadastrarCliente(Cliente cliente) {
-        this.clientes.add(cliente);
     }
 }

@@ -130,38 +130,38 @@ public class MenuAddCarroVenda extends javax.swing.JFrame {
         try {
             String nomeCarro = String.valueOf(cbCarrosDisponiveis.getSelectedItem());
             ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
+            Carro carroDisponivel = new Filtrar().filtrarCarro(carrosDisponiveis, nomeCarro);
+            
             /**
              * Percorro a lista de carros disponiveis procurando qual tem nome igual ao escolhido, quando achar insere na lista de vendas
              * Pego o indice e o nome da classe do carro naquele indice para acessar e mudar seu preco
              */
-            for (Carro carroDisponivel : carrosDisponiveis) {
-                if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)){
-                    int i = carrosDisponiveis.indexOf(carroDisponivel);
-                    Carro carro = carrosDisponiveis.get(i);
-                    if (carro.getClass().getSimpleName().equals("CarroHatch") == true) {
-                        CarroHatch carroHatch = (CarroHatch) carro;
-                        if (Float.parseFloat(tfPreco.getText()) <  carroHatch.getPreco()) {
-                            throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
-                        }   
-                        Carro novoCarro = new CarroHatch(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
-                        MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
-                    } else if (carro.getClass().getSimpleName().equals("CarroSeda") == true) {
-                        CarroSeda carroSeda = (CarroSeda) carro;
-                        if (Float.parseFloat(tfPreco.getText()) <  carroSeda.getPreco()) {
-                            throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
-                        }
-                        Carro novoCarro = new CarroSeda(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
-                        MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
-                    } else {
-                        throw new Exception();
-                    }
-                    JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-                    MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
-                    limparCampos();
-                    setVisible(false);
-                    menuConcessionaria.setVisible(true);
+            
+            int i = carrosDisponiveis.indexOf(carroDisponivel);
+            Carro carro = carrosDisponiveis.get(i);
+            
+            if (carro.getClass().getSimpleName().equals("CarroHatch") == true) {
+                CarroHatch carroHatch = (CarroHatch) carro;
+                if (Float.parseFloat(tfPreco.getText()) <  carroHatch.getPreco()) {
+                    throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
+                }   
+                Carro novoCarro = new CarroHatch(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
+                MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
+            } else if (carro.getClass().getSimpleName().equals("CarroSeda") == true) {
+                CarroSeda carroSeda = (CarroSeda) carro;
+                if (Float.parseFloat(tfPreco.getText()) <  carroSeda.getPreco()) {
+                    throw new MinhaExcecao("Erro: preco menor que o sugerido pela fabricante");
                 }
+                Carro novoCarro = new CarroSeda(carro.getMarca(), carro.getNome(), carro.getVelMax(), carro.getNumPortas(), Float.parseFloat(tfPreco.getText()));
+                MenuConcessionaria.concessionaria.adicionarCarro(novoCarro);
+            } else {
+                throw new Exception();
             }
+            JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
+            limparCampos();
+            setVisible(false);
+            menuConcessionaria.setVisible(true);
         } catch (MinhaExcecao e) {
             JOptionPane.showMessageDialog(null,"" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

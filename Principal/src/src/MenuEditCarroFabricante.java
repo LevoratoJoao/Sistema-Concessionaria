@@ -171,33 +171,27 @@ public class MenuEditCarroFabricante extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         try {
-            String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
-            ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
             if (Float.parseFloat(tfPreco.getText()) < 0 || Float.parseFloat(tfVelMax.getText()) < 0) {
                 throw new MinhaExcecao("Erro: valor numerico invalido");
             }
-            for (Carro carroDisponivel : carrosDisponiveis) {
-                if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)) {
-                    carroDisponivel.setMarca(tfMarca.getText());
-                    carroDisponivel.setNome(tfNome.getText());
-                    carroDisponivel.setVelMax(Float.parseFloat(tfVelMax.getText()));
-                    carroDisponivel.setNumPortas(Integer.parseInt(String.valueOf(cbNumPortas.getSelectedItem())));
-                    if (carroDisponivel.getClass().getSimpleName().equals("CarroHatch") == true) {
-                        CarroHatch carroHatch = (CarroHatch) carroDisponivel;
-                        carroHatch.setPreco(Float.parseFloat(tfPreco.getText()));
-                    } else if (carroDisponivel.getClass().getSimpleName().equals("CarroSeda") == true) {
-                        CarroSeda carroSeda = (CarroSeda) carroDisponivel;
-                        carroSeda.setPreco(Float.parseFloat(tfPreco.getText()));
-                    } else {
-                        throw new Exception("Erro.");
-                    }
-                    JOptionPane.showMessageDialog(null, "Carro editado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                    limparCampos();
-                    MenuFabricante menuFabricante = MenuFabricante.iniciar();
-                    setVisible(false);
-                    menuFabricante.setVisible(true);
-                }
-            }
+            
+            String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
+            ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
+            
+            Carro carroDisponivel = new Filtrar().filtrarCarro(carrosDisponiveis, nomeCarro);
+            
+            carroDisponivel.setMarca(tfMarca.getText());
+            carroDisponivel.setNome(tfNome.getText());
+            carroDisponivel.setVelMax(Float.parseFloat(tfVelMax.getText()));
+            carroDisponivel.setNumPortas(Integer.parseInt(String.valueOf(cbNumPortas.getSelectedItem())));
+            
+            new Filtrar().filtrarEditarPrecoCarro(carroDisponivel, Float.parseFloat(tfPreco.getText()));
+            
+            JOptionPane.showMessageDialog(null, "Carro editado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
+            MenuFabricante menuFabricante = MenuFabricante.iniciar();
+            setVisible(false);
+            menuFabricante.setVisible(true);
         } catch (MinhaExcecao e) {
             JOptionPane.showMessageDialog(null, ""+ e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

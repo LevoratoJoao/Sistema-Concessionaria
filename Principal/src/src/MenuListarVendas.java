@@ -117,6 +117,7 @@ public class MenuListarVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        janela = null;
         MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         setVisible(false);
         menuConcessionaria.setVisible(true);

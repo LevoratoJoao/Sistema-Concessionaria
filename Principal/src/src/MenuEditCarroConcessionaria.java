@@ -142,29 +142,22 @@ public class MenuEditCarroConcessionaria extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         try {
-            String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
-            ArrayList<Carro> carrosVenda = MenuConcessionaria.concessionaria.getCarrosAVenda();
             if (Float.parseFloat(tfPreco.getText()) < 0) {
                 throw new MinhaExcecao("Erro: preco invalido");
             }
-            for (Carro carroVenda : carrosVenda) {
-                if (carroVenda.getNome().equalsIgnoreCase(nomeCarro)) {
-                    if (carroVenda.getClass().getSimpleName().equals("CarroHatch") == true) {
-                        CarroHatch carroHatch = (CarroHatch) carroVenda;
-                        carroHatch.setPreco(Float.parseFloat(tfPreco.getText()));
-                    } else if (carroVenda.getClass().getSimpleName().equals("CarroSeda") == true) {
-                        CarroSeda carroSeda = (CarroSeda) carroVenda;
-                        carroSeda.setPreco(Float.parseFloat(tfPreco.getText()));
-                    } else {
-                        throw new Exception();
-                    }
-                    JOptionPane.showMessageDialog(null, "Carro editado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-                    MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
-                    limparCampos();
-                    setVisible(false);
-                    menuConcessionaria.setVisible(true);
-                }
-            }
+            
+            String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
+            ArrayList<Carro> carrosVenda = MenuConcessionaria.concessionaria.getCarrosAVenda();
+            Carro carroVenda = new Filtrar().filtrarCarro(carrosVenda, nomeCarro);
+            
+            new Filtrar().filtrarEditarPrecoCarro(carroVenda, Float.parseFloat(tfPreco.getText()));
+            
+            JOptionPane.showMessageDialog(null, "Carro editado", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
+            limparCampos();
+            setVisible(false);
+            menuConcessionaria.setVisible(true);
+              
         } catch (MinhaExcecao e) {
             JOptionPane.showMessageDialog(null, "" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         } catch (Exception e) {

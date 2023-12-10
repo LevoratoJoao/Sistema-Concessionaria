@@ -126,17 +126,17 @@ public class MenuRemoverCarro extends javax.swing.JFrame {
         try {
             String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
             ArrayList<Carro> carrosVenda = MenuConcessionaria.concessionaria.getCarrosAVenda();
-            for (Carro carroVenda : carrosVenda) {
-                if (carroVenda.getNome().equalsIgnoreCase(nomeCarro)){
-                    MenuConcessionaria.concessionaria.removerCarro(carroVenda);
-                    JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-                    janela = null;
-                    MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
-                    setVisible(false);
-                    menuConcessionaria.setVisible(true);
-                    return;
-                }
-            }
+            
+            Carro carroVenda = new Filtrar().filtrarCarro(carrosVenda, nomeCarro);
+            MenuConcessionaria.concessionaria.removerCarro(carroVenda);
+            
+            JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            janela = null;
+            MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
+            setVisible(false);
+            menuConcessionaria.setVisible(true);
+            return;
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao tentar remover carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -146,17 +146,15 @@ public class MenuRemoverCarro extends javax.swing.JFrame {
         try {
             String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
             ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis();
-            for (Carro carroDisponivel : carrosDisponiveis) {
-                if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)){
-                    MenuConcessionaria.concessionaria.getFabricante().removerCarro(carroDisponivel);
-                    JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-                    janela = null;
-                    MenuFabricante menuFabricante = MenuFabricante.iniciar();
-                    setVisible(false);
-                    menuFabricante.setVisible(true);
-                    return;
-                }
-            }
+            Carro carroDisponivel = new Filtrar().filtrarCarro(carrosDisponiveis, nomeCarro);
+           
+            MenuConcessionaria.concessionaria.getFabricante().removerCarro(carroDisponivel);
+            JOptionPane.showMessageDialog(null, "Carro removido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
+            janela = null;
+            MenuFabricante menuFabricante = MenuFabricante.iniciar();
+            setVisible(false);
+            menuFabricante.setVisible(true);
+            return;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Erro ao tentar remover carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -171,6 +169,7 @@ public class MenuRemoverCarro extends javax.swing.JFrame {
     }
     
     public void voltar() {
+        janela = null;
         if (this.pagina == true) {
             MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
             setVisible(false);

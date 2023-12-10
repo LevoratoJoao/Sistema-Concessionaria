@@ -38,13 +38,20 @@ public class MenuVenderCarro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbCliente = new javax.swing.JLabel();
         lbCarro = new javax.swing.JLabel();
-        cbClientes = new javax.swing.JComboBox<>();
         cbCarros = new javax.swing.JComboBox<>();
         btVender = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lbNome = new javax.swing.JLabel();
+        tfNome = new javax.swing.JTextField();
+        lbDadosCliente = new javax.swing.JLabel();
+        lbIdade = new javax.swing.JLabel();
+        tfIdade = new javax.swing.JTextField();
+        lbCPF = new javax.swing.JLabel();
+        tfCPF = new javax.swing.JTextField();
+        lbTelefone = new javax.swing.JLabel();
+        tfTelefone = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vender Carro");
@@ -53,8 +60,6 @@ public class MenuVenderCarro extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-
-        lbCliente.setText("Cliente");
 
         lbCarro.setText("Carro");
 
@@ -74,32 +79,46 @@ public class MenuVenderCarro extends javax.swing.JFrame {
 
         jLabel1.setText("Vender");
 
+        lbNome.setText("Nome:");
+
+        lbDadosCliente.setText("Dados do cliente");
+
+        lbIdade.setText("Idade:");
+
+        lbCPF.setText("CPF:");
+
+        lbTelefone.setText("Telefone:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btVender)
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lbCliente)
-                        .addComponent(lbCarro)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbCarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addComponent(btCancelar)
-                        .addGap(52, 52, 52))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(123, 123, 123)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lbIdade)
+                                .addComponent(lbNome)
+                                .addComponent(lbCPF))
+                            .addGap(79, 79, 79)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btVender)
+                                .addComponent(lbDadosCliente)
+                                .addComponent(lbTelefone)
+                                .addComponent(lbCarro))
+                            .addGap(67, 67, 67)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbCarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btCancelar))))
+                    .addComponent(tfIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,14 +126,28 @@ public class MenuVenderCarro extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
+                .addComponent(lbDadosCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbCliente)
-                    .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                    .addComponent(lbNome)
+                    .addComponent(tfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbIdade)
+                    .addComponent(tfIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbCPF)
+                    .addComponent(tfCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbTelefone)
+                    .addComponent(tfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCarro)
                     .addComponent(cbCarros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVender)
                     .addComponent(btCancelar))
@@ -129,50 +162,65 @@ public class MenuVenderCarro extends javax.swing.JFrame {
         for (Carro carroDisponivel : carrosDisponiveis) {
             cbCarros.addItem(carroDisponivel.getNome());
         }
-        ArrayList<Cliente> clientes = MenuConcessionaria.concessionaria.getClientes();
-        for (Cliente cliente : clientes) {
-            cbClientes.addItem(cliente.getNome());
-        }
-
     }//GEN-LAST:event_formWindowOpened
 
+    public class MinhaExcecao extends Exception {
+        public MinhaExcecao(String message){
+            super(message);
+        }
+    }
+    
     private void btVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderActionPerformed
         try {
+            // Carro
             String nomeCarro = String.valueOf(cbCarros.getSelectedItem());
             ArrayList<Carro> carrosDisponiveis = MenuConcessionaria.concessionaria.getCarrosAVenda();
             Carro carro = new Carro();
-            for (Carro carroDisponivel : carrosDisponiveis) {
-                if (carroDisponivel.getNome().equalsIgnoreCase(nomeCarro)) {
-                    carro = carroDisponivel;
-                }
+            carro = new Filtrar().filtrarCarro(carrosDisponiveis, nomeCarro);
+            
+            // Cliente
+            String nome = tfNome.getText();
+            String CPF = tfCPF.getText();
+            Integer idade = Integer.parseInt(tfIdade.getText());
+            String telefone = tfTelefone.getText();
+            if (nome.isBlank() == true || CPF.isBlank() == true || telefone.isBlank() == true) {
+                throw new MinhaExcecao("Erro: valor digitado invalido");
             }
-            String nomeCliente = String.valueOf(cbClientes.getSelectedItem());
-            Cliente cliente = new Cliente();
-            ArrayList<Cliente> clientes = MenuConcessionaria.concessionaria.getClientes();
-            for (Cliente clienteCadastrado : clientes) {
-                if (clienteCadastrado.getNome().equalsIgnoreCase(nomeCliente)) {
-                    cliente = clienteCadastrado;
-                }
+            if (idade < 18) {
+                throw new MinhaExcecao("Erro: apenas maiores de 18 anos podem comprar um carro");
             }
+            Cliente cliente = new Cliente(nome, CPF, idade, telefone);
+            
             NotaFiscal notaFiscal = new NotaFiscal(cliente, carro);
             MenuConcessionaria.concessionaria.venderCarro(notaFiscal, carro);
+            
             JOptionPane.showMessageDialog(null, "Carro vendido","Sucesso",JOptionPane.INFORMATION_MESSAGE);
-            janela = null;
+            limparCampos();
             MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
             setVisible(false);
             menuConcessionaria.setVisible(true);
+        }catch (MinhaExcecao e) {
+            JOptionPane.showMessageDialog(null, ""+e.getMessage(),"Erro",JOptionPane.WARNING_MESSAGE); 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao tentar vender carro", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btVenderActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        janela = null;
+        limparCampos();
         MenuConcessionaria menuConcessionaria = MenuConcessionaria.iniciar();
         setVisible(false);
         menuConcessionaria.setVisible(true);
     }//GEN-LAST:event_btCancelarActionPerformed
 
+    public void limparCampos(){
+        janela = null;
+        tfNome.setText("");
+        tfCPF.setText("");
+        tfIdade.setText("");
+        tfTelefone.setText("");
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -212,9 +260,16 @@ public class MenuVenderCarro extends javax.swing.JFrame {
     private javax.swing.JButton btCancelar;
     private javax.swing.JButton btVender;
     private javax.swing.JComboBox<String> cbCarros;
-    private javax.swing.JComboBox<String> cbClientes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lbCPF;
     private javax.swing.JLabel lbCarro;
-    private javax.swing.JLabel lbCliente;
+    private javax.swing.JLabel lbDadosCliente;
+    private javax.swing.JLabel lbIdade;
+    private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbTelefone;
+    private javax.swing.JTextField tfCPF;
+    private javax.swing.JTextField tfIdade;
+    private javax.swing.JTextField tfNome;
+    private javax.swing.JTextField tfTelefone;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,21 +3,30 @@
 Sistema CRUD de uma Concessionaria e Fabricante de carros onde é possivel vender um carro a um cliente cadastrado no sistema.
 
 * [Diagramas](#Diagramas)
-* [Implementação](#Implementação)
-    * [Desing Pattern](#Desing-Pattern)
-    * [Menus](#menus)
-    * [Tratamento de erros](#Tratamento-de-erros)
-    * [Polimorfismo](#Polimorfismo)
+* [Desing Pattern](#Desing-Pattern)
+* [Menus](#menus)
+* [Tratamento de erros](#Tratamento-de-erros)
+* [Polimorfismo](#Polimorfismo)
 
 # Diagramas
 
-TODO
+### Diagrama de classes
 
-# Implementação
+![diagrama_classes](/Diagramas/diagrama_classes.png)
+
+
 
 # Desing Pattern
 
-TODO
+No sistema foram implementados dois Desing Pattern, o primeiro deles foi o ```Singleton``` para garantir que uma unica instancia das classes de Menus seja instanciada.
+
+![simgleton](./Images/singleton.png)
+
+O segundo é o ```Delegação``` que nada mais é do que polimorfismo implementado no sistema, onde uma subclasse do Carro é tratado como um objeto da superclasse.
+
+O terceiro Desing Pattern usado no sistema foi o ```Visitor``` para filtrar a lista de carros das classes.
+
+![filtrar](./Images/classe_filtrar.png)
 
 # Menus
 
@@ -85,28 +94,15 @@ A concessionaria só possui a opção de mudar o preço de um carro para sua ven
 
 Remover e listar se mantem iguais aos da Fabricante mas apenas com carros da lista de à venda. No metódo editar só é possivel alterar o preço do carro à venda.
 
-Para as opções de clientes e vendas é necessário cadastrar um cliente antes de realizar uma venda, caso contrario um ```warning``` alertando que o sistema não possui nenhum cliente cadastrado
-
-![erro_clientes_cadastrados](Images/erro_clientes_cadastrados.png)
-
-### Cadastrar Cliente
-
-![cadastrar_cliente](Images/cadastrar_cliente.png)
-
-O mesmo tratamento para valores nulos e negativos é feito no cadastro de clientes além de verificar se o cliente já esta cadastrado no sistema (CPF igual)
-
 ### Vender Carro
-Na opção ```Vender Carro``` o usuário pode escolher qual cliente que irá comprar e qual carro que irá vender, ao clicar em ```Vender``` o carro é removido da lista de disponiveis para a venda e uma "nota fiscal" é criada com os dados de ambos
+
+Na opção ```Vender Carro``` o usuário deve preencher os dados do cliente que irá comprar o veiculo e qual carro que irá vender, ao clicar em ```Vender``` o carro é removido da lista de disponiveis para a venda e uma "nota fiscal" é criada com os dados de ambos. O mesmo tratamento para valores nulos e negativos é feito no cadastro do cliente.
 
 ![vender_carro](Images/vender_carro.png)
 
-Busca na lista de Carros a venda e na de Clientes cadastrados o carro e o cliente selecionado
-
-![classe_vender_carro](Images/classe_vender_carro.png)
-
-Adiciona a nota fiscal com as informações do cliente e do carro na lista de notas fiscais da Concessionaria e remove o carro.
 
 ![metodo_vender_carro](Images/metodo_vender_carro.png)
+
 
 ### Listar vendas
 

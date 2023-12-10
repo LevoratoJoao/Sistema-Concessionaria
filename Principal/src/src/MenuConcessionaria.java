@@ -45,8 +45,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         btRemoveCarro = new javax.swing.JButton();
         btListarCarros = new javax.swing.JButton();
         lbVendaCarros = new javax.swing.JLabel();
-        lbClientesVendas = new javax.swing.JLabel();
-        btCadastrarCliente = new javax.swing.JButton();
+        lbVendas = new javax.swing.JLabel();
         btListarVendas = new javax.swing.JButton();
         btVenderCarro = new javax.swing.JButton();
         btMenuFabricante = new javax.swing.JButton();
@@ -87,14 +86,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
         lbVendaCarros.setText("Venda de carros");
 
-        lbClientesVendas.setText("Clientes e Vendas");
-
-        btCadastrarCliente.setText("Cadastrar Cliente");
-        btCadastrarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCadastrarClienteActionPerformed(evt);
-            }
-        });
+        lbVendas.setText("Vendas");
 
         btListarVendas.setText("Listar Vendas");
         btListarVendas.addActionListener(new java.awt.event.ActionListener() {
@@ -143,15 +135,16 @@ public class MenuConcessionaria extends javax.swing.JFrame {
                                 .addComponent(btListarCarros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(btMenuFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btCadastrarCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btListarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btVenderCarro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbClientesVendas)
-                        .addGap(8, 8, 8))
-                    .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(101, 101, 101))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btListarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(btVenderCarro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbVendas)
+                        .addGap(136, 136, 136))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addComponent(lbMenuConcessionaria)
@@ -165,19 +158,17 @@ public class MenuConcessionaria extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbVendaCarros)
-                    .addComponent(lbClientesVendas))
+                    .addComponent(lbVendas))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btCadastrarCliente)
-                    .addComponent(btAddCarro))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btAddCarro)
+                    .addComponent(btListarVendas))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btEditCarro)
-                    .addComponent(btListarVendas))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btRemoveCarro)
                     .addComponent(btVenderCarro))
+                .addGap(15, 15, 15)
+                .addComponent(btRemoveCarro)
                 .addGap(18, 18, 18)
                 .addComponent(btListarCarros)
                 .addGap(34, 34, 34)
@@ -192,7 +183,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
     private void btEditCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditCarroActionPerformed
         if (concessionaria.getFabricante().getCarrosDisponiveis().isEmpty() == true) {
-            JOptionPane.showMessageDialog(null, "Fabricante não possui carro","Erro",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Concessionaria não possui carro","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
             MenuEditCarroConcessionaria menuEditCarroConcessionaria = MenuEditCarroConcessionaria.iniciar();
             setVisible(false);
@@ -207,10 +198,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
     }//GEN-LAST:event_btMenuFabricanteActionPerformed
 
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
-        Login login = Login.iniciar();
-        setVisible(false);
-        login.limparCampos();
-        login.setVisible(true);
+        System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
 
     private void btAddCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddCarroActionPerformed
@@ -230,12 +218,6 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         menuListarCarros.setVisible(true);
     }//GEN-LAST:event_btListarCarrosActionPerformed
 
-    private void btCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarClienteActionPerformed
-        MenuCadastrarCliente menuCadastrarCliente = MenuCadastrarCliente.iniciar();
-        setVisible(false);
-        menuCadastrarCliente.setVisible(true);
-    }//GEN-LAST:event_btCadastrarClienteActionPerformed
-
     private void btListarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarVendasActionPerformed
         MenuListarVendas menuListarVendas = MenuListarVendas.iniciar();
         menuListarVendas.carregarVendas();
@@ -246,10 +228,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
     private void btVenderCarroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVenderCarroActionPerformed
         if (concessionaria.getCarrosAVenda().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro a venda","Erro",JOptionPane.WARNING_MESSAGE);
-        } else if (concessionaria.getClientes().isEmpty() == true) {
-            JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum cliente cadastrado","Erro",JOptionPane.WARNING_MESSAGE);
-        }
-        else {
+        } else {
             MenuVenderCarro menuVenderCarro = new MenuVenderCarro();
             setVisible(false);
             menuVenderCarro.setVisible(true);
@@ -305,7 +284,6 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAddCarro;
-    private javax.swing.JButton btCadastrarCliente;
     private javax.swing.JButton btEditCarro;
     private javax.swing.JButton btListarCarros;
     private javax.swing.JButton btListarVendas;
@@ -313,8 +291,8 @@ public class MenuConcessionaria extends javax.swing.JFrame {
     private javax.swing.JButton btRemoveCarro;
     private javax.swing.JButton btSair;
     private javax.swing.JButton btVenderCarro;
-    private javax.swing.JLabel lbClientesVendas;
     private javax.swing.JLabel lbMenuConcessionaria;
     private javax.swing.JLabel lbVendaCarros;
+    private javax.swing.JLabel lbVendas;
     // End of variables declaration//GEN-END:variables
 }

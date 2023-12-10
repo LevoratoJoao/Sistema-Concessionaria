@@ -44,17 +44,20 @@
                   </Group>
               </Group>
               <EmptySpace pref="99" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btCadastrarCliente" max="32767" attributes="0"/>
-                  <Component id="btListarVendas" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btVenderCarro" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lbClientesVendas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btListarVendas" alignment="0" pref="120" max="32767" attributes="0"/>
+                          <Component id="btVenderCarro" max="32767" attributes="0"/>
+                          <Component id="btSair" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="btSair" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lbVendas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="173" max="-2" attributes="0"/>
@@ -71,23 +74,20 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbVendaCarros" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lbClientesVendas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbVendas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btCadastrarCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btAddCarro" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btAddCarro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btListarVendas" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btEditCarro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btListarVendas" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btRemoveCarro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btVenderCarro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Component id="btRemoveCarro" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btListarCarros" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -143,18 +143,10 @@
         <Property name="text" type="java.lang.String" value="Venda de carros"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbClientesVendas">
+    <Component class="javax.swing.JLabel" name="lbVendas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Clientes e Vendas"/>
+        <Property name="text" type="java.lang.String" value="Vendas"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btCadastrarCliente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cadastrar Cliente"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCadastrarClienteActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btListarVendas">
       <Properties>
