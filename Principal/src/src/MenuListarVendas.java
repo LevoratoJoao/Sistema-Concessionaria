@@ -44,6 +44,7 @@ public class MenuListarVendas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Lista de Vendas");
+        setLocation(new java.awt.Point(700, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -128,28 +129,31 @@ public class MenuListarVendas extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) tbVendas.getModel();
             model.setNumRows(0);
             for (NotaFiscal notaFiscal : MenuConcessionaria.concessionaria.getNotasFiscais()) {
-                if (notaFiscal.getCarro().getTipo().equals("Hatch") == true) {
-                    CarroHatch carroHatch = (CarroHatch) notaFiscal.getCarro();
-                    model.addRow(new Object[]{
-                        notaFiscal.getCliente().getNome(),
-                        notaFiscal.getCliente().getCpf(),
-                        notaFiscal.getCarro().getNome(),
-                        notaFiscal.getCarro().getTipo(),
-                        notaFiscal.getCarro().getMarca(),
-                        carroHatch.getPreco()
-                    });
-                } else if (notaFiscal.getCarro().getTipo().equals("Seda") == true) {
-                    CarroSeda carroSeda = (CarroSeda) notaFiscal.getCarro();
-                    model.addRow(new Object[]{
-                        notaFiscal.getCliente().getNome(),
-                        notaFiscal.getCliente().getCpf(),
-                        notaFiscal.getCarro().getNome(),
-                        notaFiscal.getCarro().getTipo(),
-                        notaFiscal.getCarro().getMarca(),
-                        carroSeda.getPreco()
-                    });
-                } else {
-                    throw new Exception();
+                switch(notaFiscal.getCarro().getTipo()) {
+                    case "Hatch":
+                        CarroHatch carroHatch = (CarroHatch) notaFiscal.getCarro();
+                        model.addRow(new Object[]{
+                            notaFiscal.getCliente().getNome(),
+                            notaFiscal.getCliente().getCpf(),
+                            notaFiscal.getCarro().getNome(),
+                            notaFiscal.getCarro().getTipo(),
+                            notaFiscal.getCarro().getMarca(),
+                            carroHatch.getPreco()
+                        });
+                    break;
+                    case "Seda":
+                        CarroSeda carroSeda = (CarroSeda) notaFiscal.getCarro();
+                        model.addRow(new Object[]{
+                            notaFiscal.getCliente().getNome(),
+                            notaFiscal.getCliente().getCpf(),
+                            notaFiscal.getCarro().getNome(),
+                            notaFiscal.getCarro().getTipo(),
+                            notaFiscal.getCarro().getMarca(),
+                            carroSeda.getPreco()
+                        });
+                    break;
+                    default:
+                        throw new Exception();
                 }
             }
         } catch (Exception e) {

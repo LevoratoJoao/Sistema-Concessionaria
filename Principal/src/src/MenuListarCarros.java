@@ -44,6 +44,7 @@ public class MenuListarCarros extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Carros Disponiveis");
+        setLocation(new java.awt.Point(700, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -144,26 +145,28 @@ public class MenuListarCarros extends javax.swing.JFrame {
             DefaultTableModel model =(DefaultTableModel) tbCarros.getModel();
             model.setNumRows(0);
             for(Carro carroDisponivel : MenuConcessionaria.concessionaria.getFabricante().getCarrosDisponiveis()) {
-                if (carroDisponivel.getTipo().equals("Hatch") == true) {
-                    CarroHatch carro = (CarroHatch) carroDisponivel;
-                    model.addRow(new Object[] 
-                    { 
-                        carro.getNome(), 
-                        carro.getMarca(), 
-                        carro.getTipo(),
-                        carro.getPreco()
-                    }); 
-                } else if (carroDisponivel.getTipo().equals("Seda") == true) {
-                    CarroSeda carro = (CarroSeda) carroDisponivel;
-                    model.addRow(new Object[] 
-                    { 
-                        carro.getNome(), 
-                        carro.getMarca(), 
-                        carro.getTipo(),
-                        carro.getPreco()
-                    }); 
-                } else {
-                    throw new Exception();
+                switch (carroDisponivel.getTipo()) {
+                    case "Hatch":
+                        CarroHatch carroHatch = (CarroHatch) carroDisponivel;
+                        model.addRow(new Object[] { 
+                            carroHatch.getNome(), 
+                            carroHatch.getMarca(), 
+                            carroHatch.getTipo(),
+                            carroHatch.getPreco(),
+                            
+                        }); 
+                        break;
+                    case "Seda":
+                        CarroSeda carroSeda = (CarroSeda) carroDisponivel;
+                        model.addRow(new Object[] { 
+                            carroSeda.getNome(), 
+                            carroSeda.getMarca(), 
+                            carroSeda.getTipo(),
+                            carroSeda.getPreco()
+                        }); 
+                        break;
+                    default:
+                        throw new Exception();
                 }
             }
         }catch(Exception e){
@@ -176,27 +179,28 @@ public class MenuListarCarros extends javax.swing.JFrame {
             DefaultTableModel model =(DefaultTableModel) tbCarros.getModel();
             model.setNumRows(0);
             for(Carro carroDisponivel : MenuConcessionaria.concessionaria.getCarrosAVenda()) {
-                if (carroDisponivel.getTipo().equals("Hatch") == true) {
-                    CarroHatch carro = (CarroHatch) carroDisponivel;
-                    model.addRow(new Object[] 
-                    { 
-                        carro.getNome(), 
-                        carro.getMarca(), 
-                        carro.getTipo(),
-                        carro.getPreco()
-                    }); 
-                } else if (carroDisponivel.getTipo().equals("Seda") == true) {
-                    CarroSeda carro = (CarroSeda) carroDisponivel;
-                    model.addRow(new Object[] 
-                    { 
-                        carro.getNome(), 
-                        carro.getMarca(), 
-                        carro.getTipo(),
-                        carro.getPreco()
-                    }); 
-                } else {
-                    JOptionPane.showMessageDialog(null,"Erro ao tentar listar carros", "Erro", JOptionPane.ERROR_MESSAGE);
-                    throw new Exception();
+                switch (carroDisponivel.getTipo()) {
+                    case "Hatch":
+                        CarroHatch carroHatch = (CarroHatch) carroDisponivel;
+                        model.addRow(new Object[] { 
+                            carroHatch.getNome(), 
+                            carroHatch.getMarca(), 
+                            carroHatch.getTipo(),
+                            carroHatch.getPreco()
+                        }); 
+                        break;
+                    case "Seda":
+                        CarroSeda carroSeda = (CarroSeda) carroDisponivel;
+                        model.addRow(new Object[] { 
+                            carroSeda.getNome(), 
+                            carroSeda.getMarca(), 
+                            carroSeda.getTipo(),
+                            carroSeda.getPreco()
+                        }); 
+                        break;
+                    default:
+                        JOptionPane.showMessageDialog(null,"Erro ao tentar listar carros", "Erro", JOptionPane.ERROR_MESSAGE);
+                        throw new Exception();
                 }
             }
         }catch(Exception e){

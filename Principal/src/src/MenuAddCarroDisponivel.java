@@ -54,6 +54,7 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adicionar Carro Fabricante");
+        setLocation(new java.awt.Point(700, 300));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -188,15 +189,14 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
             if (preco < 0 || velMax < 0 || nome.isBlank()== true || marca.isBlank()== true) {
                 throw new MinhaExcecao("Erro: valor digitado invalido");
             }
-            Carro carro;
             switch (tipo) {
                 case "Hatch":
-                    carro = new CarroHatch(marca, nome, velMax, numPortas, preco);
-                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
+                    CarroHatch carroHatch = new CarroHatch(marca, nome, velMax, numPortas, preco);
+                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carroHatch);
                     break;
                 case "Seda":
-                    carro = new CarroSeda(marca, nome, velMax, numPortas, preco);
-                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
+                    CarroSeda carroSeda = new CarroSeda(marca, nome, velMax, numPortas, preco);
+                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carroSeda);
                     break;
                 default:
                     throw new Exception();

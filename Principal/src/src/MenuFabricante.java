@@ -46,6 +46,7 @@ public class MenuFabricante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu da Fabricante");
+        setLocation(new java.awt.Point(700, 300));
 
         jLabel1.setText("Menu Fabricante");
 

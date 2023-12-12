@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
+        setLocation(new java.awt.Point(700, 300));
 
         lbUser.setText("Usuario");
 
