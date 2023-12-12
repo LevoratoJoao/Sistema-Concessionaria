@@ -180,10 +180,10 @@ public class MenuVenderCarro extends javax.swing.JFrame {
             
             // Cliente
             String nome = tfNome.getText();
-            String CPF = tfCPF.getText();
+            Integer CPF = Integer.parseInt(tfCPF.getText());
             Integer idade = Integer.parseInt(tfIdade.getText());
-            String telefone = tfTelefone.getText();
-            if (nome.isBlank() == true || CPF.isBlank() == true || telefone.isBlank() == true) {
+            Integer telefone = Integer.parseInt(tfTelefone.getText());
+            if (nome.isBlank() == true) {
                 throw new MinhaExcecao("Erro: valor digitado invalido");
             }
             if (idade < 18) {

@@ -10,11 +10,11 @@ package src;
  */
 public class Cliente {
     private String nome;
-    private String cpf;
+    private Integer cpf;
     private Integer idade;
-    private String telefone;
+    private Integer telefone;
 
-    public Cliente(String nome, String cpf, Integer idade, String telefone) {
+    public Cliente(String nome, Integer cpf, Integer idade, Integer telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -33,11 +33,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 
@@ -49,11 +49,11 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public String getTelefone() {
+    public Integer getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
 }

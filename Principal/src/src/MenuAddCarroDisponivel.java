@@ -188,14 +188,18 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
             if (preco < 0 || velMax < 0 || nome.isBlank()== true || marca.isBlank()== true) {
                 throw new MinhaExcecao("Erro: valor digitado invalido");
             }
-            if (tipo.equals("Hatch") == true) {
-                Carro carro = new CarroHatch(marca, nome, velMax, numPortas, preco);
-                MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
-            } else if (tipo.equals("Seda") == true) {
-                Carro carro = new CarroSeda(marca, nome, velMax, numPortas, preco);
-                MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
-            } else {
-                throw new Exception("Erro.");
+            Carro carro;
+            switch (tipo) {
+                case "Hatch":
+                    carro = new CarroHatch(marca, nome, velMax, numPortas, preco);
+                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
+                    break;
+                case "Seda":
+                    carro = new CarroSeda(marca, nome, velMax, numPortas, preco);
+                    MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carro);
+                    break;
+                default:
+                    throw new Exception();
             }
             JOptionPane.showMessageDialog(null, "Carro adicionado","Sucesso",JOptionPane.INFORMATION_MESSAGE);
             MenuFabricante menuFabricante = MenuFabricante.iniciar();
