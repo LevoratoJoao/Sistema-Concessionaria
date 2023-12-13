@@ -4,6 +4,7 @@
  */
 package src;
 
+import Segurador.LoginSeguradora;
 import javax.swing.JOptionPane;
 
 
@@ -15,7 +16,9 @@ public class MenuConcessionaria extends javax.swing.JFrame {
 
     public static MenuConcessionaria janela;
 
-    public static Concessionaria concessionaria = new Concessionaria();;
+    public static Concessionaria concessionaria = new Concessionaria();
+    public static LoginSeguradora loginSeguradora = new LoginSeguradora();
+    
     /**
      * Creates new form Concessionaria
      */
@@ -50,6 +53,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         btVenderCarro = new javax.swing.JButton();
         btMenuFabricante = new javax.swing.JButton();
         btSair = new javax.swing.JButton();
+        btSeguradora = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu da Concessionaria");
@@ -117,6 +121,13 @@ public class MenuConcessionaria extends javax.swing.JFrame {
             }
         });
 
+        btSeguradora.setText("Seguradora");
+        btSeguradora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSeguradoraActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,14 +149,15 @@ public class MenuConcessionaria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btListarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                            .addComponent(btVenderCarro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btSair, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(101, 101, 101))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lbVendas)
-                        .addGap(136, 136, 136))))
+                        .addGap(136, 136, 136))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btSeguradora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btListarVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(btVenderCarro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSair))
+                        .addGap(101, 101, 101))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(173, 173, 173)
                 .addComponent(lbMenuConcessionaria)
@@ -169,7 +181,9 @@ public class MenuConcessionaria extends javax.swing.JFrame {
                     .addComponent(btEditCarro)
                     .addComponent(btVenderCarro))
                 .addGap(15, 15, 15)
-                .addComponent(btRemoveCarro)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btRemoveCarro)
+                    .addComponent(btSeguradora))
                 .addGap(18, 18, 18)
                 .addComponent(btListarCarros)
                 .addGap(34, 34, 34)
@@ -230,7 +244,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
         if (concessionaria.getCarrosAVenda().isEmpty() == true) {
             JOptionPane.showMessageDialog(null, "Concessionaria não possui nenhum carro a venda","Erro",JOptionPane.WARNING_MESSAGE);
         } else {
-            MenuVenderCarro menuVenderCarro = new MenuVenderCarro();
+            MenuVenderCarro menuVenderCarro = MenuVenderCarro.iniciar();
             setVisible(false);
             menuVenderCarro.setVisible(true);
         }
@@ -246,6 +260,12 @@ public class MenuConcessionaria extends javax.swing.JFrame {
             menuRemoverCarro.setVisible(true);
         }
     }//GEN-LAST:event_btRemoveCarroActionPerformed
+
+    private void btSeguradoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSeguradoraActionPerformed
+        loginSeguradora.iniciar();
+        loginSeguradora.displayGUI();
+        setVisible(false);
+    }//GEN-LAST:event_btSeguradoraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +311,7 @@ public class MenuConcessionaria extends javax.swing.JFrame {
     private javax.swing.JButton btMenuFabricante;
     private javax.swing.JButton btRemoveCarro;
     private javax.swing.JButton btSair;
+    private javax.swing.JButton btSeguradora;
     private javax.swing.JButton btVenderCarro;
     private javax.swing.JLabel lbMenuConcessionaria;
     private javax.swing.JLabel lbVendaCarros;

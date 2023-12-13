@@ -4,16 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuVenderCarro.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuAddCarroDisponivel.java</file>
             <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuConcessionaria.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuListarVendas.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuListarCarros.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuEditCarroConcessionaria.java</file>
+            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuAddCarroDisponivel.java</file>
+            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/Cliente.java</file>
+            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/Segurador/LoginSeguradora.java</file>
             <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuAddCarroVenda.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuFabricante.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/Login.java</file>
-            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuEditCarroFabricante.java</file>
             <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuRemoverCarro.java</file>
+            <file>file:/C:/Users/João%20Vitor/Desktop/Sistema-Concessionaria/Principal/src/src/MenuEditCarroFabricante.java</file>
         </group>
     </open-files>
 </project-private>

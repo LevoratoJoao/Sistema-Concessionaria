@@ -191,11 +191,11 @@ public class MenuAddCarroDisponivel extends javax.swing.JFrame {
             }
             switch (tipo) {
                 case "Hatch":
-                    CarroHatch carroHatch = new CarroHatch(marca, nome, velMax, numPortas, preco);
+                    Carro carroHatch = new CarroHatch(marca, nome, velMax, numPortas, preco);
                     MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carroHatch);
                     break;
                 case "Seda":
-                    CarroSeda carroSeda = new CarroSeda(marca, nome, velMax, numPortas, preco);
+                    Carro carroSeda = new CarroSeda(marca, nome, velMax, numPortas, preco);
                     MenuConcessionaria.concessionaria.getFabricante().adicionarCarro(carroSeda);
                     break;
                 default:
